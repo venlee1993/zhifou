@@ -1,14 +1,18 @@
+import {LOGIN, LOGOUT} from "./mutations-types";
+
 export default {
     //登录
-    login(state, data) {
+    [LOGIN](state, data) {
         state.loginState = true;
+        state.user = data.user;
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('user', JSON.stringify(data.user));
     },
     //登出
-    logout(state) {
+    [LOGOUT](state) {
         state.loginState = false;
-        localStorage.removeItem('token');
+        state.user = null;
         localStorage.removeItem('user');
+        localStorage.removeItem('token');
     }
 }

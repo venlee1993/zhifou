@@ -5,26 +5,26 @@
             <b-row>
                 <b-col :md="9">
                     <!---- 正文详细 ---->
-                    <div class="context" v-if="information">
+                    <div class="context" v-if="postInner">
                         <div class="author d-flex">
                             <div class="info">
                                 <div class="d-flex">
                                     <div class="avatar">
-                                        <b-img width="40" height="40" rounded="circle" :src="information.user.avatar"></b-img>
+                                        <b-img width="40" height="40" rounded="circle" :src="postInner.user.avatar"></b-img>
                                     </div>
                                     <div class="intros">
-                                        <div class="name">{{information.user.name}}</div>
-                                        <div class="time">{{information.created_at}}</div>
+                                        <div class="name">{{postInner.user.name}}</div>
+                                        <div class="time">{{postInner.created_at}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="attention">
-                                <b-button size="sm" variant="outline-success" @click="attention(information.id)">关注</b-button>
+                                <b-button size="sm" variant="outline-success" @click="attention(postInner.id)">关注</b-button>
                             </div>
                         </div>
                         <div class="contain">
-                            <h3 class="title">{{information.title}}</h3>
-                            <div class="text markdown-body" v-html="information.content"></div>
+                            <h3 class="title">{{postInner.title}}</h3>
+                            <div class="text markdown-body" v-html="postInner.content"></div>
                         </div>
                     </div>
                     <!---- 正文详细end ---->
@@ -113,6 +113,7 @@
 </template>
 
 <script>
+
     import Header from '../layout/Header'
     import Side from '../layout/Side'
     import {mapState} from 'vuex'
@@ -128,7 +129,7 @@
         },
         data() {
             return {
-                information: null,  //文章详情默认
+                postInner: null,  //文章详情默认
                 slideId: '0-0',     //回复输入框ID组合
                 slideElement: null, //回复输入框DOM
                 commentState: false, //评论框提交显示
@@ -140,7 +141,7 @@
             ...mapState(['user']),
         },
         created() {
-            this.getInfomation();
+            this.getPostInner();
             this.getCommentlist();
         },
         methods: {
@@ -193,18 +194,16 @@
             commentBtnShow() {
                 this.commentState = true;
             },
-            getInfomation() {
+            getPostInner() {
                 this.$http.get(`/api/post/${this.id}/show`).then(res => {
-                    if (res.status == 200) {
-                        this.information = res.data;
-                    }
+                    this.postInner = res.data;
                 })
             },
             getCommentlist() {
                 this.$http.get(`/api/post/${this.id}/comment`).then(res => {
                     this.commentList = res.data
                 })
-            }
+            },
         }
     }
 </script>

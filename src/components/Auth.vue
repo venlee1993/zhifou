@@ -54,13 +54,13 @@
             }
         },
         methods: {
-            ...mapMutations(['login']),
+            ...mapMutations(['LOGIN']),
             handleSubmit(evt) {
                 evt.preventDefault();
                 const url = this.type == 'login' ? '/api/auth/login' : '/api/auth/register';
                 this.$http.post(url, this.formData).then(res => {
                     if (res.status == 201) {
-                        this.login(res.data)
+                        this.LOGIN(res.data)
                         this.$router.push('/');
                     }
                 })

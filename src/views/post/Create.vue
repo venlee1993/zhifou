@@ -11,7 +11,7 @@
                         <b-btn size="sm" variant="primary" @click="showModal">发布</b-btn>
                     </div>
                     <div class="avatar">
-                        <b-img width="36" height="36" :src="user.avatar" rounded="circle" alt="Circle image"/>
+                        <!--<b-img width="36" height="36" :src="user.avatar" rounded="circle" alt="Circle image"/>-->
                     </div>
                 </div>
             </div>
@@ -50,12 +50,7 @@
             return {
                 title: '',
                 text: '',
-                formData: {
-                    title: '',
-                    content: '',
-                    column_id: 9,
-                    tag: ''
-                },
+                formData: {title: '', content: '', column_id: 9, tag: ''},
                 toolbar: config,
                 show: false,
                 selected: 9,

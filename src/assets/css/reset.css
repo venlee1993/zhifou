@@ -461,11 +461,10 @@ nav {
     font-size: .875rem;
 }
 
-.modal-content{
+.modal-content {
     border: none;
 }
 
-
-button:focus{
+button:focus {
     outline: none;
 }

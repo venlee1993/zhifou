@@ -71,7 +71,7 @@
             }
         },
         created() {
-            this.$http.get('/api/post/list').then(res => {
+            this.$http('/api/post/list').then(res => {
                 if (res.status == 200) {
                     this.posts = res.data
                 }
@@ -83,8 +83,8 @@
                     console.log(res);
                 })
             },
-            msgAction() {
-
+            msgAction(){
+                console.log(111);
             }
         }
     }

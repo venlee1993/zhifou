@@ -22,7 +22,7 @@
                         <router-link to="#" class="dropdown-item">我的主页</router-link>
                         <router-link to="#" class="dropdown-item">我的收藏</router-link>
                         <router-link to="#" class="dropdown-item">设置</router-link>
-                        <span class="dropdown-item">注销</span>
+                        <span class="dropdown-item" @click="logout">注销</span>
                     </b-nav-item-dropdown>
                     <div v-else class="auth">
                         <router-link to="/auth/login" class="login item">登录</router-link>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState, mapMutations} from 'vuex'
 
     export default {
         name: "Header",
@@ -49,8 +49,10 @@
 
         },
         methods: {
-            log() {
-                console.log(111);
+            ...mapMutations(['LOGOUT']),
+            logout() {
+                this.LOGOUT();
+                this.$router.push('/auth/login')
             }
         }
     }

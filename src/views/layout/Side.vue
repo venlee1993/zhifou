@@ -2,7 +2,7 @@
     <div class="side">
         <div class="operations">
             <div class="action">
-                <router-link to="/post/create">写文章</router-link>
+                <router-link to="/post/create" target="_blank">写文章</router-link>
             </div>
             <div class="action">
                 <router-link to="'/">写回答</router-link>

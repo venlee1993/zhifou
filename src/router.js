@@ -22,6 +22,7 @@ export default new Router({
             path: '/post/create',
             name: 'create',
             props: true,
+            meta: {auth: true},
             component: () => import('./views/post/Create')
         },
         {
@@ -33,6 +34,16 @@ export default new Router({
             path: '/auth/register',
             name: 'register',
             component: () => import('./views/auth/Register')
+        },
+        {
+            path: '/user/index',
+            name: 'userindex',
+            component: () => import('./views/user/Index')
+        },
+        {
+            path: '/user/setting',
+            name: 'usersetting',
+            component: () => import('./views/user/Setting')
         }
     ]
 })
